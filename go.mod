@@ -1,4 +1,4 @@
-module SpaceRecon
+module github.com/chrishorton/spacerecon
 
 go 1.21.6
 
