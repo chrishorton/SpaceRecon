@@ -1,7 +1,6 @@
 package spacerecon
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/chrishorton/spacerecon/config"
@@ -9,9 +8,6 @@ import (
 )
 
 const (
-	uriBase              = "https://www.space-track.org"
-	requestLogin         = "/ajaxauth/login"
-	requestCmdAction     = "/basicspacedata/query"
 	requestFindStarlinks = "/class/tle_latest/NORAD_CAT_ID/>40000/ORDINAL/1/OBJECT_NAME/STARLINK~~/format/json/orderby/NORAD_CAT_ID%20asc"
 
 	requestOMMStarlink1 = "/class/omm/NORAD_CAT_ID/"
@@ -35,7 +31,7 @@ type Satellite struct {
 	MEAN_ANOMALY      string `json:"MEAN_ANOMALY"`
 }
 
-func GetStarlinkSatellites() {
+func GetStarlinkSatellites() ([]Satellite, error) {
 	client := resty.New()
 
 	resp, err := client.R().
@@ -54,10 +50,8 @@ func GetStarlinkSatellites() {
 		Get(uriBase + requestCmdAction + requestFindStarlinks)
 
 	if err != nil || resp.StatusCode() != 200 {
-		log.Fatalf("Error fetching Starlink satellites: %v, %s", err, resp.Status())
+		return nil, err
 	}
 
-	fmt.Println(resp.Result().(*[]Satellite))
-
-	fmt.Println("Completed session")
+	return *resp.Result().(*[]Satellite), nil
 }

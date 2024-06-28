@@ -22,9 +22,8 @@ SpaceRecon is an Open-Source Intelligence (OSINT) tool for satellite reconnaissa
     Create a `config.yaml` file and enter your credentials
 
     ```sh
-    configuration:
-      username: "<Space-Track username>"
-      password: "<Space-Track password>"
+    username: "<Space-Track username>"
+    password: "<Space-Track password>"
     ```
 
 3. **Build the project**:

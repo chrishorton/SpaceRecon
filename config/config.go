@@ -7,17 +7,17 @@ import (
 )
 
 type Config struct {
-	Username string `yaml:"username"`
-	Password string `yaml:"password"`
+	Username string `mapstructure:"username"`
+	Password string `mapstructure:"password"`
 }
 
 var Cfg Config
 
-func LoadConfig() {
+func LoadConfig(directory string) {
 
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
-	viper.AddConfigPath(".")
+	viper.AddConfigPath(directory)
 	if err := viper.ReadInConfig(); err != nil {
 		log.Fatalf("Error reading config file, %s", err)
 	}
@@ -26,5 +26,5 @@ func LoadConfig() {
 	if err := viper.Unmarshal(&config); err != nil {
 		log.Fatalf("unable to decode into struct, %v", err)
 	}
-
+	Cfg = config
 }
