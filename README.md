@@ -125,8 +125,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Acknowledgements
 
 - [Space-Track](https://www.space-track.org/)
-- [N2YO](https://www.n2yo.com/)
-
----
-
-Feel free to modify this README to better suit your project's needs or add more detailed instructions and examples.
