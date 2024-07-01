@@ -14,7 +14,6 @@ type Config struct {
 var Cfg Config
 
 func LoadConfig(directory string) {
-
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
 	viper.AddConfigPath(directory)
@@ -26,5 +25,9 @@ func LoadConfig(directory string) {
 	if err := viper.Unmarshal(&config); err != nil {
 		log.Fatalf("unable to decode into struct, %v", err)
 	}
+    if config.Username == "" || config.Password == "" {
+        log.Fatalf("Username and password must be set in config file")
+    }
+
 	Cfg = config
 }

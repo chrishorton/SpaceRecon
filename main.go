@@ -6,7 +6,8 @@ import (
 	"github.com/manifoldco/promptui"
 
 	"github.com/chrishorton/spacerecon/config"
-	"github.com/chrishorton/spacerecon/spacerecon"
+	"github.com/chrishorton/spacerecon/tle"
+    "github.com/chrishorton/spacerecon/starlink"
 )
 
 func main() {
@@ -28,11 +29,12 @@ func main() {
 			// Handle TLE query
 			fmt.Println("Querying TLE...")
 			// Add TLE query functionality here
+            tle.Get()
 
 		case "Starlink Satellites":
 			// Handle Starlink satellites query
 			fmt.Println("Fetching Starlink satellites...")
-			spacerecon.GetStarlinkSatellites()
+			starlink.Get()
 
 		case "Exit":
 			fmt.Println("Exiting...")
