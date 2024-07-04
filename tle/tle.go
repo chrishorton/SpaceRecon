@@ -9,7 +9,7 @@ import (
 
 const (
     requestTLE       = "/class/gp_history/norad_cat_id/"
-    tleParams        = "/CREATION_DATE/%3Enow-30/limit/1/format/json"
+    tleParams        = "/CREATION_DATE/%3Enow-30/limit/5/format/json"
 
 	requestIssTle    = "/class/gp_history/format/tle/NORAD_CAT_ID/25544/orderby/EPOCH%20desc/limit/22"
 	uriBase          = "https://www.space-track.org"
@@ -84,10 +84,22 @@ func Get(noradId int) ([]TLE, error) {
 	return *resp.Result().(*[]TLE), nil
 }
 
+// Puts the data into a binary flatbuffer file
+func SerializeTLE() {
+    // TODO
+}
+
 func (t TLE) PrintTLE() {
-    fmt.Printf("TLE for %s:\n", t.ObjectName)
-    fmt.Printf("%s\n", t.TLELine1)
-    fmt.Printf("%s\n", t.TLELine2)
+	border := "====================================="
+    fmt.Println()
+	fmt.Println(border)
+	fmt.Printf("TLE for %s (NORAD ID: %s)\n", t.ObjectName, t.NoradCatID)
+	fmt.Println(border)
+	fmt.Printf("%s\n", t.TLELine0)
+	fmt.Printf("%s\n", t.TLELine1)
+	fmt.Printf("%s\n", t.TLELine2)
+	fmt.Println(border)
+    fmt.Println()
 }
 
 func PrintTLEs(tles []TLE) {
