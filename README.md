@@ -1,6 +1,6 @@
 ![SpaceRecon Logo](/assets/spacerecon-logo.png)
 
-SpaceRecon is an Open-Source Intelligence (OSINT) tool for satellite reconnaissance, built with Golang. The tool can fetch satellite telemetry data, retrieve and parse TLE (Two-Line Element) data, and get the latest predicted satellite conjunctions.
+SpaceRecon is an Open-Source Intelligence (OSINT) tool for satellite reconnaissance, built with Golang. The tool can retrieve and parse TLE (Two-Line Element) data, and get the latest satellite conjunctions.
 
 ## Features
 
