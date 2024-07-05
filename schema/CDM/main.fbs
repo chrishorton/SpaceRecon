@@ -3,6 +3,8 @@ include "../CAT/main.fbs";
 include "../EPM/main.fbs";
 include "../RFM/main.fbs";
 
+namespace CDM;
+
 enum screeningVolumeShape : byte {
   ELLIPSOID,
   BOX
@@ -17,7 +19,7 @@ table CDMObject {
   /// A comment
   COMMENT:string;
   // Catalog Definition
-  OBJECT:CAT;
+  OBJECT:CAT.CAT;
   /// Point of Contact
   POC:EPM;
   /// Operator contact position
@@ -29,7 +31,7 @@ table CDMObject {
   /// Covariance method
   COVARIANCE_METHOD:covarianceMethod;
   /// Reference Frame in which the object position is defined
-  REFERENCE_FRAME:refFrame;
+  REFERENCE_FRAME:RFM.refFrame;
   /// Gravity model
   GRAVITY_MODEL:string;
   /// Atmospheric model
@@ -216,7 +218,7 @@ table CDM {
   /// The end time of the screening period
   STOP_SCREEN_PERIOD:string;
   /// The reference frame for the screening volume
-  SCREEN_VOLUME_FRAME:refFrame;
+  SCREEN_VOLUME_FRAME:RFM.refFrame;
   /// The shape of the screening volume
   SCREEN_VOLUME_SHAPE:screeningVolumeShape;
   /// The X dimension of the screening volume
@@ -238,9 +240,9 @@ table CDM {
   /// The second object in the CDM message
   OBJECT2:CDMObject;
   /// Data Source for the positional information for Object 1
-  OBJECT1_DATASOURCE:PNM;
+  OBJECT1_DATASOURCE:PNM.PNM;
   /// Data Source for the positional information for Object 2
-  OBJECT2_DATASOURCE:PNM;
+  OBJECT2_DATASOURCE:PNM.PNM;
 }
 
 

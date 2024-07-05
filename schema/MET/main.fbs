@@ -1,3 +1,4 @@
+namespace MET;
 
 enum meanElementTheory : byte {
   /// Simplified General Perturbation Model 4

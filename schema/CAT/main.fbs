@@ -3,6 +3,8 @@ include "../LCC/main.fbs";
 
 // https://www.celestrak.com/satcat/satcat-format.php
 
+namespace CAT;
+
 enum objectType: byte {
   /// 0
   PAYLOAD,
@@ -75,7 +77,7 @@ table CAT {
   /// Operational Status Code
   OPS_STATUS_CODE: opsStatusCode = UNKNOWN;
   /// Ownership, typically country or company
-  OWNER: legacyCountryCode;
+  OWNER: LCC.legacyCountryCode;
   /// Launch Date [year-month-day] (ISO 8601)
   LAUNCH_DATE: string;
   /// Launch Site
@@ -109,7 +111,7 @@ table CAT {
   /// Mass type (Dry, Wet)
   MASS_TYPE: massType = DRY;
   /// Vector of PAYLOADS
-  PAYLOADS: [PLD];
+  PAYLOADS: [PLD.PLD];
 }
 
 table CATCOLLECTION {

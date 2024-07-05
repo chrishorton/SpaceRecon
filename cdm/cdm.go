@@ -2,12 +2,11 @@ package cdm
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/chrishorton/spacerecon/config"
 	"github.com/go-resty/resty/v2"
 	flatbuffers "github.com/google/flatbuffers/go"
-
-	"github.com/chrishorton/spacerecon/pkg/flatbuffers/CDM"
 )
 
 // Interface with the Space-Track API for public conjunctions
@@ -100,14 +99,31 @@ func (c Conjunction) PrintConjunction() {
 	fmt.Println()
 }
 
-func (c *Conjunction) SerializeConjunction() {
+func (c *Conjunction) SerializeConjunction() ([]byte, error) {
 	builder := flatbuffers.NewBuilder(0)
-	CDM.CDMAddMessageId(builder, builder.CreateString(c.Cdm_id))
-	CDM.CDMAddTca(builder, builder.CreateString(c.Tca))
+	fmt.Println(c)
+	return builder.Bytes, nil
 }
 
-func SerializeConjunctions(conjunctions []Conjunction) {
-	for _, c := range conjunctions {
-		c.SerializeConjunction()
+func SerializeConjunctions(conjunctions []Conjunction) (bool, error) {
+	// create a file for writing pass the filename as an arg
+	fileName := "conjunctions.bin"
+	file, err := os.OpenFile(fileName, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		return false, fmt.Errorf("error creating file: %v", err)
 	}
+	defer file.Close()
+
+	for _, c := range conjunctions {
+		bytes, err := c.SerializeConjunction()
+		if err != nil {
+			return false, fmt.Errorf("error serializing conjunction: %v", err)
+		}
+		// write bytes to file
+		_, err = file.Write(bytes)
+		if err != nil {
+			return false, fmt.Errorf("error writing to file: %v", err)
+		}
+	}
+	return true, nil
 }

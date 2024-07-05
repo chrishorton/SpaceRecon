@@ -1,5 +1,7 @@
 include "../IDM/main.fbs";
 
+namespace PLD;
+
 /// Payload Information
 table PLD {
   PAYLOAD_DURATION: string;
@@ -8,7 +10,7 @@ table PLD {
   SOLAR_ARRAY_AREA: float;
   SOLAR_ARRAY_DIMENSIONS: string;
   NOMINAL_OPERATIONAL_LIFETIME: string;
-  INSTRUMENTS: [IDM]; // Vector of Instrument Data Messages
+  INSTRUMENTS: [IDM.IDM]; // Vector of Instrument Data Messages
 }
 
 table PLDCOLLECTION {

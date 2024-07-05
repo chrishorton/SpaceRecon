@@ -9,6 +9,7 @@ import (
 type Config struct {
 	Username string `mapstructure:"username"`
 	Password string `mapstructure:"password"`
+	CDMLimit int    `mapstructure:"cdm_limit"`
 }
 
 var Cfg Config
@@ -17,16 +18,19 @@ func LoadConfig(directory string) {
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
 	viper.AddConfigPath(directory)
+
+	viper.SetDefault("cdm_limit", 100)
+
 	if err := viper.ReadInConfig(); err != nil {
-		log.Fatalf("Error reading config file, %s", err)
+		log.Fatalf("Error reading config file, %s, did you create a `config.yaml` file in this directory?", err)
 	}
 	var config Config
 	if err := viper.Unmarshal(&config); err != nil {
 		log.Fatalf("There was an error with your input, %v", err)
 	}
-    if config.Username == "" || config.Password == "" {
-        log.Fatalf("Username and password must be set in config file 'config.yaml'")
-    }
+	if config.Username == "" || config.Password == "" {
+		log.Fatalf("Username and password must be set in config file 'config.yaml'")
+	}
 
 	Cfg = config
 }

@@ -1,3 +1,5 @@
+namespace TIM; 
+
 enum timeSystem : byte {
   /// Greenwich Mean Sidereal Time
   GMST,

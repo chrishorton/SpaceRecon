@@ -1,3 +1,4 @@
+namespace RFM;
 
 enum refFrame : byte {
   /// Earth-Centered-Earth-Fixed (ECEF) frame: Rotates with Earth. Origin at Earth's center. X-axis towards prime meridian, Y-axis eastward, Z-axis towards North Pole. Ideal for terrestrial points.

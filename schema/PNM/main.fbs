@@ -1,3 +1,5 @@
+namespace PNM;
+
 /// Publish Notification Message
 table PNM {
   /// Multiformat Address
