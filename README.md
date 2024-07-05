@@ -36,13 +36,12 @@ SpaceRecon is an Open-Source Intelligence (OSINT) tool for satellite reconnaissa
 
     ```sh
     go build -o spacerecon
-    ```
-
-## Usage
-
-    ```sh
     ./spacerecon
     ```
+    or
+   ```sh
+   go run main.go
+   ```
 
 ## API Integration
 
