@@ -40,16 +40,9 @@ SpaceRecon is an Open-Source Intelligence (OSINT) tool for satellite reconnaissa
 
 ## Usage
 
-
-### Get Latest Conjunctions
-
-To fetch the latest satellite conjunctions:
-
-```sh
-./spacerecon --conjunctions
-```
-
-This will retrieve the latest conjunction data, showing potential close approaches between satellites.
+    ```sh
+    ./spacerecon
+    ```
 
 ## API Integration
 
