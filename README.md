@@ -11,7 +11,7 @@ SpaceRecon is an Open-Source Intelligence (OSINT) tool for satellite reconnaissa
 
 ## Usage
 
-Download the latest version from (Releases)[https://github.com/chrishorton/SpaceRecon/releases/tag/v1.0.0]
+Download the latest version from [Releases](https://github.com/chrishorton/SpaceRecon/releases/tag/v1.0.0)
 
 Run the binary
 ```sh
