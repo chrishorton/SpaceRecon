@@ -9,7 +9,16 @@ SpaceRecon is an Open-Source Intelligence (OSINT) tool for satellite reconnaissa
 - **Orbital Predictions**: Generate orbital predictions based on TLE data.
 - **Conjunction Data**: Fetch the latest satellite conjunctions to identify potential collisions.
 
-## Installation
+## Usage
+
+Download the latest version from (Releases)[https://github.com/chrishorton/SpaceRecon/releases/tag/v1.0.0]
+
+Run the binary
+```sh
+    ./SpaceRecon
+```
+
+## Build from Source
 
 1. **Clone the repository**:
 
